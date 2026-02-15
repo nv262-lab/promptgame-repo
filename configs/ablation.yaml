@@ -1,0 +1,46 @@
+# Ablation Study Configuration
+# Used to reproduce Table VII results
+
+models:
+  - gpt-4o
+
+defense_configurations:
+  - name: none
+    spb: false
+    ara: false
+    rtes: false
+  
+  - name: spb_only
+    spb: true
+    ara: false
+    rtes: false
+  
+  - name: spb_ara
+    spb: true
+    ara: true
+    rtes: false
+  
+  - name: spb_ara_rtes
+    spb: true
+    ara: true
+    rtes: true
+
+# Defense parameters
+spb_threshold: 0.85
+ara_thresholds:
+  - 0.3
+  - 0.6
+  - 0.9
+rtes_entropy_bits: 8
+
+# Evaluation parameters
+num_prompts_per_config: 2500
+num_runs: 5
+semantic_threshold: 0.85
+
+# Data paths
+attack_data_path: data/attacks
+prompt_data_path: data/prompts
+output_path: data/results/ablation
+
+random_seed: 42

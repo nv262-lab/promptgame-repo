@@ -1,0 +1,32 @@
+# Fingerprinting Resistance Evaluation Configuration
+# Used to reproduce Table IX results
+
+defense_configurations:
+  - name: spb_only_deterministic
+    mode: spb_only
+    description: "SPB only (deterministic)"
+  
+  - name: spb_ara_deterministic
+    mode: spb_ara
+    description: "SPB + ARA (deterministic)"
+  
+  - name: spb_ara_rtes
+    mode: spb_ara_rtes
+    description: "SPB + ARA + RTES"
+
+# Fingerprinting parameters
+num_diagnostic_probes: 8
+num_trials: 100
+
+# Defense parameters
+spb_threshold: 0.85
+ara_thresholds:
+  - 0.3
+  - 0.6
+  - 0.9
+rtes_entropy_bits: 8
+
+# Output
+output_path: data/results/fingerprinting
+
+random_seed: 42

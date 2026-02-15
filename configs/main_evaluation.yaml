@@ -1,0 +1,35 @@
+# Main Evaluation Configuration
+# Used to reproduce Table V results
+
+models:
+  - gpt-4o
+  - claude-3-sonnet-20240229
+  - meta-llama/Meta-Llama-3-70B-Instruct
+  - mistralai/Mistral-7B-Instruct-v0.2
+
+defense_modes:
+  - none
+  - spb_only
+  - spb_ara
+  - spb_ara_rtes
+
+# Defense parameters
+spb_threshold: 0.85
+ara_thresholds:
+  - 0.3
+  - 0.6
+  - 0.9
+rtes_entropy_bits: 8
+
+# Evaluation parameters
+num_prompts_per_config: 2500
+num_runs: 5
+semantic_threshold: 0.85
+
+# Data paths
+attack_data_path: data/attacks
+prompt_data_path: data/prompts
+output_path: data/results
+
+# Reproducibility
+random_seed: 42
