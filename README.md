@@ -94,13 +94,13 @@ ara = AdaptiveRiskAssessment(risk_thresholds=[0.3, 0.6, 0.9])
 risk_level, action = ara.assess(user_input)
 ```
 
-### 3. Randomized Token Embedding Shuffling (RTES)
-Implements randomized defense strategy to prevent fingerprinting.
+### 3. Real-Time Equilibrium Strategy (RTES)
+Implements a randomized mixed-strategy defense that continuously updates defense configurations based on observed attack patterns using multiplicative weights, preventing adversarial fingerprinting of the defense mechanism.
 
 ```python
-from src.defenses import RandomizedTokenEmbeddingShuffling
+from src.defenses import RealTimeEquilibriumStrategy
 
-rtes = RandomizedTokenEmbeddingShuffling(entropy_bits=8)
+rtes = RealTimeEquilibriumStrategy(k=8, eta=0.1, window=100)
 defended_input = rtes.apply(user_input)
 ```
 
@@ -135,8 +135,10 @@ models:
 
 defense:
   spb_threshold: 0.85
-  ara_risk_thresholds: [0.3, 0.6, 0.9]
-  rtes_entropy_bits: 8
+  ara_risk_thresholds: [0.3, 0.7]
+  rtes_k: 8
+  rtes_eta: 0.1
+  rtes_window: 100
 
 evaluation:
   num_prompts: 2500
